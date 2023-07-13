@@ -6,6 +6,25 @@ const dbName = 'avsar'; // Update with your database name
 let cachedClient = null;
 
 async function connectToDatabase() {
+  if (cachedClient && cachedClient.isConnected && cachedClient.isConnected()) {
+    return cachedClient;
+  }
+
+  const client = await MongoClient.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+
+  const db = client.db(dbName);
+
+  cachedClient = client;
+
+  return client;
+}
+
+
+/*
+async function connectToDatabase() {
   if (cachedClient && cachedClient.isConnected()) {
     return cachedClient;
   }
@@ -17,5 +36,5 @@ async function connectToDatabase() {
 
   return client;
 }
-
+*/
 export { connectToDatabase };

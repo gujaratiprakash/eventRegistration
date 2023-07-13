@@ -1,4 +1,4 @@
-/* import { connectToDatabase } from '../db';
+ import { connectToDatabase } from './db';
 
 export default async function handler(req, res) {
     const client = await connectToDatabase();
@@ -20,7 +20,9 @@ export default async function handler(req, res) {
     } else {
         res.status(405).json({ message: 'Method not allowed.' });
     }
-} */
+}
+
+/*
 import { MongoClient } from 'mongodb';
 import { NextApiRequest, NextApiResponse } from 'next';
 
@@ -53,3 +55,4 @@ export default async function handler(req, res) {
     // Close the MongoDB connection
     client.close();
 }
+*/
