@@ -1,12 +1,11 @@
 const Joi = require('joi');
 
-exports.createInstituteValidator = (req, res, next) => {
-    const instituteSchema = Joi.object({
-        institute: Joi.string().required(),
-        university: Joi.string().optional()
+exports.createDepartmentValidator = (req, res, next) => {
+    const departmentSchema = Joi.object({
+        name: Joi.string().required()
     });
 
-    const { error } = instituteSchema.validate(req.body);
+    const { error } = departmentSchema.validate(req.body);
     if (error) {
         return res.status(400).json({ error: error.details[0].message });
     }

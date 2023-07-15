@@ -1,12 +1,12 @@
 const Joi = require('joi');
 
-exports.createInstituteValidator = (req, res, next) => {
-    const instituteSchema = Joi.object({
-        institute: Joi.string().required(),
-        university: Joi.string().optional()
+exports.createEventValidator = (req, res, next) => {
+    const eventSchema = Joi.object({
+        title: Joi.string().required(),
+        categoryId: Joi.string().optional()
     });
 
-    const { error } = instituteSchema.validate(req.body);
+    const { error } = eventSchema.validate(req.body);
     if (error) {
         return res.status(400).json({ error: error.details[0].message });
     }

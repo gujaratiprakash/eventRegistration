@@ -1,14 +1,14 @@
 const express = require('express');
-const instituteController = require('../controllers/instituteController');
-const instituteValidator = require('../validators/instituteValidator');
+const eventController = require('../controllers/eventController');
+const eventValidator = require('../validators/eventValidator');
 
 const router = express.Router();
 
-router.post('/store', instituteValidator.createInstituteValidator, instituteController.createInstitute);
-router.get('/getall', instituteController.getInstitutes);
-router.get('/:id', instituteController.getInstituteById);
-router.delete('/:id', instituteController.deleteInstituteById);
-router.put('/:id', instituteValidator.createInstituteValidator, instituteController.updateInstituteById);
+router.post('/store', eventValidator.createEventValidator, eventController.createEvent);
+router.get('/getall', eventController.getEvents);
+router.get('/:id', eventController.getEventById);
+router.delete('/:id', eventController.deleteEventById);
+router.put('/:id', eventValidator.createEventValidator, eventController.updateEventById);
 
 
 module.exports = router;
