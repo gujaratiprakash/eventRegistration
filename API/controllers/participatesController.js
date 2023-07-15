@@ -1,9 +1,29 @@
 const mongoose = require('mongoose');
 
+// exports.createParticipates = async (req, res) => {
+//     try {
+//         const participatesCollectionSchema = new mongoose.Schema({}, { strict: false })
+//         const ParticipatesCollection = mongoose.model('participates', participatesCollectionSchema)
+//         const ParticipatesCollectionObj = new ParticipatesCollection(req.body);
+//         await ParticipatesCollectionObj.save();
+//         res.status(201).json({
+//             "msg": "Data Saved Successfully"
+//         });
+//     } catch (err) {
+//         res.status(400).json({ error: err.message });
+//     }
+// };
+let ParticipatesCollection;
+
+try {
+  ParticipatesCollection = mongoose.model('participates');
+} catch {
+  const participatesCollectionSchema = new mongoose.Schema({}, { strict: false });
+  ParticipatesCollection = mongoose.model('participates', participatesCollectionSchema);
+}
+
 exports.createParticipates = async (req, res) => {
     try {
-        const participatesCollectionSchema = new mongoose.Schema({}, { strict: false })
-        const ParticipatesCollection = mongoose.model('participates', participatesCollectionSchema)
         const ParticipatesCollectionObj = new ParticipatesCollection(req.body);
         await ParticipatesCollectionObj.save();
         res.status(201).json({
