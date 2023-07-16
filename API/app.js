@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
 const passport = require('passport');
+const cors = require('cors');
 
 const instituteRoutes = require('./routes/instituteRoutes');
 const participatesRoutes = require('./routes/participatesRoutes');
@@ -11,6 +11,14 @@ const departmentRoutes = require('./routes/departmentRoutes');
 const eventRoutes = require('./routes/eventRoutes');
 
 const app = express();
+
+// Configure CORS middleware with options
+const corsOptions = {
+  origin: 'strict-origin-when-cross-origin',
+};
+
+app.use(cors(corsOptions));
+
 const port = 3000;
 app.use(bodyParser.json());
 
