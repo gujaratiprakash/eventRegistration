@@ -39,6 +39,13 @@ app.use('/category', categoryRoutes);
 app.use('/department', departmentRoutes);
 app.use('/event', eventRoutes);
 
+// const serverOptions = {
+//     key: fs.readFileSync('server.key'),
+//     cert: fs.readFileSync('server.cert')
+//   };
+  
+// const server = https.createServer(serverOptions, app);
+
 app.listen(port, () => {
     console.log('Server is running on port ' + port);
 });
